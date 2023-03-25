@@ -1,0 +1,43 @@
+name: release
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create .zip installable
+        uses: thedoctor0/zip-release@0.7.1
+        with:
+          type: 'zip'
+          directory: 'mod_soccer_table'
+          path: '.'
+          filename: 'mod_soccer_table.zip'
+          exclusions: '*.git* /*node_modules/* .editorconfig'
+
+      - name: Upload Release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          artifacts: "mod_soccer_table/mod_soccer_table.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          allowUpdates: true
+
+      - name: Create .zip installable
+        uses: thedoctor0/zip-release@0.7.1
+        with:
+          type: 'zip'
+          directory: 'mod_soccer_results'
+          path: '.'
+          filename: 'mod_soccer_results.zip'
+          exclusions: '*.git* /*node_modules/* .editorconfig'
+
+      - name: Upload Release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          artifacts: "mod_soccer_results/mod_soccer_results.zip"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          allowUpdates: true

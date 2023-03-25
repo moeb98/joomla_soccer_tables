@@ -1,0 +1,20 @@
+<updates>
+ <update>
+    <name>Soccer Results</name>
+    <description>Soccer Results Module for Joomla 4.x</description>
+    <element>mod_soccer_results</element>
+    <type>module</type>
+	<client>0</client>
+    <version>0.1</version>
+    <infourl title="Soccer Results Module forJoomla!">https://github.com/moeb98/joomla_soccer_tables</infourl>
+    <downloads>
+        <downloadurl type="full" format="zip">https://github.com/moeb98/joomla_soccer_tables/releases/download/v0.1-alpha/mod_soccer_results.zip</downloadurl>
+    </downloads>
+    <tags>
+        <tag>stable</tag>
+    </tags>
+    <maintainer>Mario Eberlein</maintainer>
+    <maintainerurl>https://github.com/moeb98/joomla_soccer_tables</maintainerurl>
+    <targetplatform name="joomla" version="4.*"/>
+ </update>
+</updates>

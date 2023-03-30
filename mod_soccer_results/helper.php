@@ -3,6 +3,7 @@
  * helper.php 
  */
 
+use Joomla\CMS\Log\Log;
 use Joomla\CMS\Factory;
 
 class modSoccerResultsHelper
@@ -13,13 +14,15 @@ class modSoccerResultsHelper
     public function __construct($module)
     {
         // Load Bootstrap and JQuery
+        
         JHtml::_('bootstrap.framework');
+        JHtml::_('jquery.framework'); 
 
         $app = Factory::getApplication();
-        $document = $app->getDocument();
-
+        $document = $app->getDocument();        
         $document->addScriptDeclaration('
       jQuery(document).ready(function() {
+        
         change_spieltag_' . $module->id . '();
         jQuery(document).on("change", "#spielplan_' . $module->id . '", change_spieltag_' . $module->id . ');
       });
@@ -31,7 +34,7 @@ class modSoccerResultsHelper
               option: "com_ajax",
               module: "soccer_results",
               Itemid: "' . $app->getMenu()->getActive()->id . '",
-              method: "getErgebnisse",
+              method: "get",
               format: "json",
               titel: "' . $module->title . '",
               spieltag: jQuery("#spieltag_' . $module->id . ' option:selected").text(),
@@ -70,6 +73,7 @@ class modSoccerResultsHelper
      */
     public static function fetchdata($url, $timeout)
     {
+        Log::add('in fetchdata ', Log::ERROR, 'my-debug-log');
         if (function_exists('curl_version')) {
             $curl = curl_init();
             curl_setopt($curl, CURLOPT_URL, $url);
@@ -77,7 +81,6 @@ class modSoccerResultsHelper
             curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
             $content = curl_exec($curl);
             curl_close($curl);
-
             return $content;
         } elseif (ini_get('allow_url_fopen')) {
             $context = stream_context_create([
@@ -93,7 +96,7 @@ class modSoccerResultsHelper
     /**
      * AJAX Endpoint
      */
-    public static function getErgebnisseAjax()
+    public static function getAjax()
     {
         $jinput = Factory::getApplication()->input;
         $module = JModuleHelper::getModule('soccer_results', $jinput->get('titel', 'default_value', 'filter'));
@@ -121,7 +124,7 @@ class modSoccerResultsHelper
         } elseif ($jparams->get('matchday') != 0 && $jparams->get('matchday') != -1) {
             $spieltag = $jparams->get('matchday');
         } else {
-            $spieltag = self::fetchdata('https://api.openligadb.de/getcurrentgroup/' .$liga, $jparams->get('timeout'));
+            $spieltag = self::fetchdata('https://www.openligadb.de/api/getcurrentgroup/' .$liga, $jparams->get('timeout'));
 
             if ($spieltag === false) {
                 // Kein Spieltag vom Webservice -> den vom letzten Mal nehmen
@@ -156,9 +159,8 @@ class modSoccerResultsHelper
         if ($jparams->get('matchday') == '-1' && $spieltag > 1) {
             $spieltag -= 1;
         }
-
         $saison = $jparams->get('season');
-
+        
         // Cache lesen
         $cachefile = JPATH_BASE."/modules/mod_soccer_results/cache.txt";
         if (is_readable($cachefile)) {
@@ -174,7 +176,7 @@ class modSoccerResultsHelper
 
         // Letzte Änderung ermitteln
         $lastchange = self::fetchdata('https://api.openligadb.de/getlastchangedate/' . $liga . '/' . $saison . '/' . $spieltag, $jparams->get('timeout'));
-
+        
         if ($lastchange === false) {
             // Kein Datum vom Webservice -> Datum aus dem Cache holen
             if ($paarungen_cache[$spieltag . $liga . $saison]) {
@@ -184,7 +186,7 @@ class modSoccerResultsHelper
         } else {
             $lastchange = strtotime(json_decode($lastchange));
         }
-
+        
         // Spieltag mit diesem Stand schon im Cache?
         if (isset($paarungen_cache[$spieltag . $liga . $saison][$lastchange])) {
             $paarungen = $paarungen_cache[$spieltag . $liga . $saison][$lastchange];

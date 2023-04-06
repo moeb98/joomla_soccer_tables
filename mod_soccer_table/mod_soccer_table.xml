@@ -12,7 +12,7 @@
   <scriptfile>install.php</scriptfile>
 	<files>
 		<filename module="mod_soccer_table">mod_soccer_table.php</filename>
-		<filename>mod_soccer_results.xml</filename>
+		<filename>mod_soccer_table.xml</filename>
 		<folder>images</folder>
 		<folder>language</folder>
 		<filename>index.html</filename>

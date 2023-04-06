@@ -124,7 +124,7 @@ class modSoccerResultsHelper
         } elseif ($jparams->get('matchday') != 0 && $jparams->get('matchday') != -1) {
             $spieltag = $jparams->get('matchday');
         } else {
-            $spieltag = self::fetchdata('https://www.openligadb.de/api/getcurrentgroup/' .$liga, $jparams->get('timeout'));
+            $spieltag = self::fetchdata('https://api.openligadb.de/getcurrentgroup/' .$liga, $jparams->get('timeout'));
 
             if ($spieltag === false) {
                 // Kein Spieltag vom Webservice -> den vom letzten Mal nehmen

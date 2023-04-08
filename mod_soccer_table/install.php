@@ -87,7 +87,7 @@ class mod_soccer_tableInstallerScript {
         $query = 'DROP TABLE '.$db->quoteName('#__soccer_table');
 
         $db->setQuery($query);
-        $db->query();
+        $db->execute();
 
         return true;
     }

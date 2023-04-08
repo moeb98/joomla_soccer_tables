@@ -15,8 +15,7 @@ class modSoccerTableHelper
     {
 
     // Load JQuery
-        JHtml::_('jquery.framework');
-        JHtml::_('jquery.framework');         
+        JHtml::_('jquery.framework');     
 
         $app = Factory::getApplication();
         $document = Factory::getDocument();
@@ -137,7 +136,7 @@ class modSoccerTableHelper
 
         // Tabelle aktualisieren falls Refresh-Intervall erreicht
         if (count($tabelle) == 0 || $jparams->get('lastupdate') == '' || ($jparams->get('lastupdate') + ($jparams->get('refresh') * 60) < time())) {
-            $paarungen = self::fetchdata('https://www.openligadb.de/api/getmatchdata/' . $liga . '/' . $jparams->get('season'), $jparams->get('timeout'));
+            $paarungen = self::fetchdata('https://api.openligadb.de/getmatchdata/' . $liga . '/' . $jparams->get('season'), $jparams->get('timeout'));
 
             if ($paarungen != false && stristr($paarungen, 'Maximale Abfrageanzahl von 1000 Abfragen pro Tag erreicht!') == false && stristr($paarungen, 'An error has occurred') == false) {
                 $paarungen = json_decode($paarungen);
@@ -357,7 +356,7 @@ class modSoccerTableHelper
                 $tdstyle .= ' border-bottom: 1px solid #A6A6A6;';
             }
 
-            $htmloutput .= '<tr style="' . $trstyle . '"><td style="'.$tdstyle.'"><b>' .$platz . '&nbsp;</b></td><td style="'.$tdstyle.'"><img style="width:20px; height:20px; padding-right:5px;" border="0" title="'.$ersetzen[$row['team']].'" alt="'.$ersetzen[$row['team']].'" src="'.JURI::root().'modules/mod_soccer_table/images/' . strtolower(str_replace(['ü', 'ä', 'ö', ' '], ['ue', 'ae', 'oe', ''], $ersetzen[$row['team']])) . '.png"></td><td style="'.$tdstyle.' text-align:left !important;">' . $ersetzen[$row['team']] . '</td><td style="'.$tdstyle.'">' . $row['spiele'] . '</td><td style="'.$tdstyle.'">' . $diff . '</td><td style="'.$tdstyle.'">' . $row['punkte'] . '</td></tr>';
+            $htmloutput .= '<tr style="' . $trstyle . '"><td style="'.$tdstyle.'"><b>' .$platz . '&nbsp;</b></td><td style="'.$tdstyle.'"><img style="padding-right:5px;" border="0" title="'.$ersetzen[$row['team']].'" alt="'.$ersetzen[$row['team']].'" src="'.JURI::root().'modules/mod_soccer_table/images/' . strtolower(str_replace(['ü', 'ä', 'ö', ' '], ['ue', 'ae', 'oe', ''], $ersetzen[$row['team']])) . '.png"></td><td style="'.$tdstyle.' text-align:left !important;">' . $ersetzen[$row['team']] . '</td><td style="'.$tdstyle.'">' . $row['spiele'] . '</td><td style="'.$tdstyle.'">' . $diff . '</td><td style="'.$tdstyle.'">' . $row['punkte'] . '</td></tr>';
 
             $platz++;
         }

@@ -249,7 +249,7 @@ class modSoccerTableHelper
                 $paarungen = $paarungen_cache[$spieltag . $liga . $saison][$lastchange];
             } else {
                 // Daten abrufen und in den Cache schreiben
-                $paarungen = self::fetchdata('https://www.openligadb.de/api/getmatchdata/' . $liga . '/' . $saison . '/' . $spieltag, $jparams->get('timeout'));
+                $paarungen = self::fetchdata('https://api.openligadb.de/getmatchdata/' . $liga . '/' . $saison . '/' . $spieltag, $jparams->get('timeout'));
 
                 if ($paarungen != false && stristr($paarungen, 'Maximale Abfrageanzahl von 1000 Abfragen pro Tag erreicht!') == false) {
                     $paarungen = json_decode($paarungen);

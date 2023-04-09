@@ -334,7 +334,7 @@ class modSoccerTableHelper
 
         $platz = 1;
         $style = 'text-align:right; vertical-align:middle; margin-right:2px;';
-        $htmloutput = '<table style="border-collapse: collapse;"><thead><tr><th style="'.$style.'">Pl.</th><th colspan=2" style="text-align:left; vertical-align: middle; margin-right:2px;">Team</th><th style="'.$style.'">Sp.</th><th style="'.$style.'">Tore</th><th style="'.$style.'">Pkt</th></tr></thead><tbody>';
+        $htmloutput = '<table style="width: 100%; border-collapse: collapse;"><thead><tr><th style="'.$style.'">Pl.</th><th colspan=2" style="text-align:left; vertical-align: middle; margin-right:2px;">Team</th><th style="'.$style.'">Sp.</th><th style="'.$style.'">Tore</th><th style="'.$style.'">Pkt</th></tr></thead><tbody>';
 
         foreach ($tabelle as $row) {
             $diff = (int) $row['tore'] - (int) $row['gegentore'];

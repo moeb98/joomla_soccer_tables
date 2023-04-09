@@ -232,7 +232,7 @@ class modSoccerResultsHelper
         }
 
         // Start HTML OUTPUT
-        $table = '<table style="width: 100%; " border="0" cellpadding="1" cellspacing="1">\r\n';
+        $table = "<table style='width: 100%;' border='0' cellpadding='1' cellspacing='1'>\r\n";
 
         // Spieltag Dropdown
         if ($liga == 'cl1617') {

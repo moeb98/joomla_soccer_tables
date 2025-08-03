@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<extension type="module" version="4.0" client="site" method="upgrade">
+<extension type="module" version="5.0" client="site" method="upgrade">
 	<name>Soccer Table</name>
 	<author>Mario Eberlein</author>
 	<creationDate>21.03.2023</creationDate>
@@ -7,8 +7,8 @@
 	<license>GNU/GPL</license>
 	<authorEmail>moeb98@yahoo.de</authorEmail>
 	<authorUrl>https://github.com/moeb98/joomla_soccer_tables</authorUrl>
-	<version>0.2-alpha</version>
-	<description>Soccer Table for Joomla 4.x</description>
+	<version>0.5-alpha</version>
+	<description>Soccer Table for Joomla 5.x</description>
   <scriptfile>install.php</scriptfile>
 	<files>
 		<filename module="mod_soccer_table">mod_soccer_table.php</filename>

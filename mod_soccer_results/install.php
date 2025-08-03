@@ -257,8 +257,10 @@ class mod_soccer_resultsInstallerScript {
 			    (149, 'VfL Osnabrück', 'OSN', 'Osnabrück', 'osnabrueck.png'),
 			    (150, 'SV Wehen Wiesbaden', 'WIS', 'Wiesbaden', 'wiesbaden.png'),
 			    (151, 'Karlsruher SC', 'KSC', 'Karlsruhe', 'karlsruhe.png'),
-				(152, 'FC Hansa Rostock', 'ROS', 'Rostock', 'rostock.png');
-			   ";
+				(152, 'FC Hansa Rostock', 'ROS', 'Rostock', 'rostock.png'),
+				(153, 'TSG Hoffenheim', 'HOF', 'Hoffenheim', 'hoffenheim.png'), 
+				(154, 'SV Werder Bremen', 'BRE', 'Bremen', 'bremen.png');
+				";
 
         $db->setQuery($query);
         $db->execute();

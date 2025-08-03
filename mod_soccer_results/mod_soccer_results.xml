@@ -7,7 +7,7 @@
 	<license>GNU/GPL</license>
 	<authorEmail>moeb98@yahoo.de</authorEmail>
 	<authorUrl>https://github.com/moeb98/joomla_soccer_tables</authorUrl>
-	<version>0.5-alpha</version>
+	<version>0.6-alpha</version>
 	<description>Soccer Results for Joomla 5.x</description>
     <scriptfile>install.php</scriptfile>
 	<files>

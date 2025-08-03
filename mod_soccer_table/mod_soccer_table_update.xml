@@ -5,16 +5,16 @@
     <element>mod_soccer_table</element>
     <type>module</type>
 	<client>0</client>
-    <version>0.3-alpha</version>
+    <version>0.4-alpha</version>
     <infourl title="Soccer Table Module forJoomla!">https://github.com/moeb98/joomla_soccer_tables</infourl>
     <downloads>
-        <downloadurl type="full" format="zip">https://github.com/moeb98/joomla_soccer_tables/releases/download/v0.3-alpha/mod_soccer_table.zip</downloadurl>
+        <downloadurl type="full" format="zip">https://github.com/moeb98/joomla_soccer_tables/releases/download/v0.4-alpha/mod_soccer_table.zip</downloadurl>
     </downloads>
     <tags>
         <tag>stable</tag>
     </tags>
     <maintainer>Mario Eberlein</maintainer>
     <maintainerurl>https://github.com/moeb98/joomla_soccer_tables</maintainerurl>
-    <targetplatform name="joomla" version="4.*"/>
+    <targetplatform name="joomla" version="5.*"/>
  </update>
 </updates>

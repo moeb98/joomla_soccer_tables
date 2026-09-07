@@ -75,6 +75,7 @@
 					<option value="SV Wehen Wiesbaden">SV Wehen Wiesbaden</option>	
 					<option value="Karlsruher SC">Karlsruher SC</option>	
 					<option value="Hansa Rostock">Hansa Rostock</option>				
+					<option value="SV 07 Elversberg">SV 07 Elversberg</option>				
 				</field>				
 				<field name="meinVereinCSS" type="text" default="background-color: #ffff99; font-weight:bold;" label="Verein hervorheben CSS" description="CSS wie der Verein hervorgehoben werden soll" />
 			</fieldset>

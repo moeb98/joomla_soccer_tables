@@ -328,6 +328,7 @@ class modSoccerTableHelper
       'SV Wehen Wiesbaden' => 'Wiesbaden',
       'Würzburger Kickers' => 'Würzburg',
       'FC Hansa Rostock' => 'Rostock',
+	  'SV 07 Elversberg' => 'Elversberg',
     ];
 
         if (count($tabelle) == 0) {
